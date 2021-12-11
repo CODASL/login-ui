@@ -21,7 +21,7 @@ class Home extends StatelessWidget {
     return Scaffold(
         appBar: AppBar(
           centerTitle: true,
-          title: const Text("Login Home"),
+          title: const Text("Logins Home"),
         ),
         body: DataTable(
           

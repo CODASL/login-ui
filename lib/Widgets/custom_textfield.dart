@@ -20,6 +20,7 @@ class CustomTextFormField extends StatefulWidget {
 }
 
 class _CustomTextFormFieldState extends State<CustomTextFormField> {
+  bool obs = false;
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -29,9 +30,20 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
         // onChanged: (value) {
         //   debugPrint(value);
         // },
-        obscureText: widget.isPassword,
+        obscureText: widget.isPassword ? obs : false, //process one
         decoration: InputDecoration(
-            suffixIcon: Icon(widget.suffixIcon),
+            suffixIcon: widget.isPassword
+                ? IconButton(
+                    onPressed: () {
+                      setState(() {
+                        obs = !obs; //changing state
+                      });
+                    },
+                    icon: Icon(obs
+                        ? Icons.visibility
+                        : Icons.visibility_off), //process two
+                  )
+                : Icon(widget.suffixIcon),
             //enabled: false,
             border: const OutlineInputBorder(),
             //labelText: 'Email',
